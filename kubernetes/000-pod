@@ -20,6 +20,8 @@ spec:
       docker run helper -link app1
 
       kubectl create -f pod.yaml
+      kubectl get pods
+      kubectl describe pod nginx-pod
       kubectl get pod nginx-pod --show-labels
 
 
