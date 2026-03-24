@@ -9,3 +9,8 @@
           containers:
             - name: nginx-container
               image: nginx
+
+
+docker run puthon-app
+
+docker run helper -link app1
