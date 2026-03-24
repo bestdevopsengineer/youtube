@@ -64,3 +64,4 @@
              kubectl create -f rs.yaml
              kubectl scale --replicas=6 -f rs.yaml
              kubectl scale --replicas=6 replicaset nginx-replicaset
+             kubectl delete replicaset nginx-replicaset
