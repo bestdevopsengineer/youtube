@@ -35,7 +35,7 @@
                                   image: nginx
 
 
-# 2- ReplicaSet
+# 2- ReplicaSet: can also manage pod not created by the replicaset that is why we add selector
                           apiVersion: v1
                           kind: ReplicaSet
                           metadata:
@@ -58,3 +58,9 @@
                                 containers:
                                   - name: nginx-container
                                     image: nginx
+
+
+
+             kubectl create -f rs.yaml
+             kubectl scale --replicas=6 -f rs.yaml
+             kubectl scale --replicas=6 replicaset nginx-replicaset
