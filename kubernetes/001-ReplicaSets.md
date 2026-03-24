@@ -35,4 +35,26 @@
                                   image: nginx
 
 
-2- ReplicaSet
+# 2- ReplicaSet
+                          apiVersion: v1
+                          kind: ReplicaSet
+                          metadata:
+                            name: nginx-replicaset
+                            labels:
+                              app: nginx-rs-label
+                          
+                          spec:
+                            replicas: 3
+                            selector: 
+                              matchLabels: 
+                                app: nginx-rs-label
+                            template:
+                              metadata:
+                                name: nginx-pod
+                                labels:
+                                  app: nginx-label
+                              
+                              spec:
+                                containers:
+                                  - name: nginx-container
+                                    image: nginx
