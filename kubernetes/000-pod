@@ -13,13 +13,9 @@ spec:
 
 
       docker run puthon-app
-      
       docker run helper -link app1
-      
       kubectl config get-contexts
-      
       kubectl config use-context kind-demo
-      
       kubectl get pod nginx-pod --show-labels
 
 
