@@ -52,7 +52,7 @@
                               metadata:
                                 name: nginx-pod
                                 labels:
-                                  app: nginx-label
+                                  app: nginx-rs-label
                               
                               spec:
                                 containers:
