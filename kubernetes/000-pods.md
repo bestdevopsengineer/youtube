@@ -1,16 +1,24 @@
-        apiVersion: v1
-        kind: Pod
-        metadata:
-          name: nginx-pod
-          labels:
-            - dev
-        
-        specs:
-          containers:
-            - name: nginx-container
-              image: nginx
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+
 
 
 docker run puthon-app
 
 docker run helper -link app1
+
+kubectl config get-contexts
+
+kubectl config use-context kind-demo
+
+
+
