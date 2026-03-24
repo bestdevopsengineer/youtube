@@ -1,4 +1,4 @@
-            pod.yaml:
+ # 0- pod.yaml:
                     apiVersion: v1
                     kind: Pod
                     
@@ -13,7 +13,7 @@
                           image: nginx
 
 
-1- Replication Controller
+# 1- Replication Controller
                         apiVersion: v1
                         kind: ReplicationController
                         metadata:
