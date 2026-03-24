@@ -23,6 +23,10 @@ spec:
       kubectl get pods
       kubectl describe pod nginx-pod
       kubectl get pod nginx-pod --show-labels
+      kubectl api-resources
+      kubectl explain pods
+      kubectl explain pods --recursive
+      kubectl explain pods.specs
 
 
 
