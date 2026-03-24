@@ -2,6 +2,7 @@ kubectl config set-context --current --namespace=dev
 
 kubectl config view --minify | grep namespace:
 
+kubectl create ns dev
 
 
 <img width="791" height="476" alt="image" src="https://github.com/user-attachments/assets/7e196230-732e-4b14-9591-3ec7a232fdf3" />
