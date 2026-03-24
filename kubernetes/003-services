@@ -1,0 +1,14 @@
+
+apiVersion: v1
+kind: Services
+metadata:
+  name: nginx-svc
+  labels:
+    app: nginx-svc-label
+
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+
+
