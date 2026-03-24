@@ -1,0 +1,12 @@
+ENTRYPOINT = the program
+CMD = the arguments for that program
+
+🧱 1. Case 1 — ENTRYPOINT Only
+
+Dockerfile
+ENTRYPOINT ["python3"]
+        
+          Behavior:
+          Container will always run python3
+          You cannot override it easily with docker run
+
