@@ -29,10 +29,10 @@
                               labels:
                                 app: nginx-label
     
-    spec:
-      containers:
-        - name: nginx-container
-          image: nginx
+                            spec:
+                              containers:
+                                - name: nginx-container
+                                  image: nginx
 
 
 2- ReplicaSet
