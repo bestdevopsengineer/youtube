@@ -27,6 +27,32 @@
 
 <img width="1525" height="492" alt="image" src="https://github.com/user-attachments/assets/b80cb245-2abd-433b-beee-e3f58d9ccd00" />
 
+# enable NamespaceAutoProvision so that pod will get create even if the namespace is not created before
+
 <img width="1711" height="487" alt="image" src="https://github.com/user-attachments/assets/bc411f8d-9fd6-4fbc-8316-e0beaa703470" />
 
 <img width="1780" height="846" alt="image" src="https://github.com/user-attachments/assets/923840d8-9524-4f04-a110-f5b2e0499ba5" />
+
+# LABS
+
+    The ImagePolicyWebhook admission controller intercepts pod creation requests and consults an external webhook service 
+    to determine whether the container images specified in the pod spec should be allowed or denied.
+    In this lab, you will configure an ImagePolicyWebhook admission controller to work with a container image scanner.
+    A functional container image scanner is already deployed with the HTTPS endpoint:
+    https://image-checker-webhook.default.svc:1323/image_policy
+    An incomplete configuration exists at /etc/kubernetes/imgvalidation.
+
+    1-What is the primary purpose of the ImagePolicyWebhook admission controller?
+    The ImagePolicyWebhook admission controller intercepts pod creation and update requests, 
+    extracts the container images, and sends them to an external webhook for validation. 
+    Based on the webhook's response, it either allows or denies the pod creation.
+
+    2-
+
+
+
+
+
+
+
+
