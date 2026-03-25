@@ -21,3 +21,5 @@
             name: high-priority
           value: 1000000000
           description: "This priority class is used for high‑priority workloads."
+
+          associate this priority class to a pod 
