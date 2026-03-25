@@ -10,3 +10,7 @@
           jobs                    app
           
                                           -2 147 483 648
+
+
+
+          kubectl get priorityclass
