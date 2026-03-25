@@ -20,3 +20,4 @@
 # 3rd startegy (add node with newer software version v1.11) cloud env
 <img width="872" height="451" alt="image" src="https://github.com/user-attachments/assets/dda6d285-ff09-4b64-b575-0fdc286ab9bb" />
 <img width="876" height="527" alt="image" src="https://github.com/user-attachments/assets/6813d416-789b-4324-a92b-4ea5e968dcab" />
+<img width="725" height="452" alt="image" src="https://github.com/user-attachments/assets/1904f9ba-358b-4238-aa40-745673754d70" />
