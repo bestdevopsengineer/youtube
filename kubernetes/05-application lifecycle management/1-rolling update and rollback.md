@@ -30,3 +30,9 @@
 <img width="1030" height="521" alt="image" src="https://github.com/user-attachments/assets/1bded66b-7555-4d73-84b9-4430dd8cd199" />
 
 <img width="907" height="535" alt="image" src="https://github.com/user-attachments/assets/d1ff51b0-7fde-42ab-9e3b-d6a5454b995e" />
+
+# Labs
+            kodekloud/webapp-color:v1
+            k set image deployment/frontend simple-webapp=kodekloud/webapp-color:v2
+            Recreate
+             k set image deployment/frontend simple-webapp=kodekloud/webapp-color:v3
