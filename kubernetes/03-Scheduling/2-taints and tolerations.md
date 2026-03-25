@@ -22,3 +22,6 @@
                     operator: "Equal"
                     value: "blue"
                     effect: "NoSchedule"
+
+                kubectl taint nodes node01 app=blue:NoSchedule
+                k taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule-  -> remove the taint
