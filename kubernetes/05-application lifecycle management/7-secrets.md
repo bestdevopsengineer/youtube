@@ -19,3 +19,33 @@
         k get secrets dashboard-token
     3- We are going to deploy an application with the below architecture
 <img width="592" height="386" alt="image" src="https://github.com/user-attachments/assets/e2b4c0d2-5e0a-4b57-840d-3ffe006f6cd4" />
+
+        We have already deployed the required pods and services. Check out the pods and services created. 
+        Check out the web application using the Webapp MySQL link above your terminal, next to the Quiz Portal Link.
+
+        Create a new secret named db-secret with the data given below. 
+        DB_Host = sql01    DB_User = root   DB_Password = password123
+        kubectl create secret generic db-secret \
+        --from-literal=DB_Host=sql01 \
+        --from-literal=DB_User=root \
+        --from-literal=DB_Password=password123
+
+        Configure the webapp-pod to load environment variables from the db-secret secret you created in the previous task.
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: webapp-pod
+          labels:
+            name: webapp-pod
+          namespace: default
+        spec:
+          containers:
+          - name: webapp
+            image: kodekloud/simple-webapp-mysql
+            imagePullPolicy: Always
+            envFrom:
+            - secretRef:
+                name: db-secret
+
+
+            
