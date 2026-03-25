@@ -11,3 +11,11 @@
 <img width="791" height="470" alt="image" src="https://github.com/user-attachments/assets/1ce3d0f6-4c3f-4eae-ac32-a7e4bcf07af8" />
 
 <img width="867" height="462" alt="image" src="https://github.com/user-attachments/assets/d542571f-60df-4876-b551-42b2fa424bc6" />
+
+# Labs
+    1- how many secrets
+        k get secrets
+    2- how many secrets in dashboard-token
+        k get secrets dashboard-token
+    3- We are going to deploy an application with the below architecture
+    <img width="592" height="386" alt="image" src="https://github.com/user-attachments/assets/e2b4c0d2-5e0a-4b57-840d-3ffe006f6cd4" />
