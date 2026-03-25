@@ -60,3 +60,11 @@
                      high priority 6   6   6
 
                      you can set it to never , so they will not get kill
+
+
+# Create a PriorityClass named high-priority, a value of 100000, and a preemption policy of PreemptLowerPriority. Do not set this class as a global default.
+                    kubectl create priorityclass high-priority \
+                      --value=100000 \
+                      --preemption-policy=PreemptLowerPriority \
+                      --description="High priority workloads" \
+                      --global-default=false
