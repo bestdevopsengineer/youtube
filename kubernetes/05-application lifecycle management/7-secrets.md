@@ -18,4 +18,4 @@
     2- how many secrets in dashboard-token
         k get secrets dashboard-token
     3- We are going to deploy an application with the below architecture
-    <img width="592" height="386" alt="image" src="https://github.com/user-attachments/assets/e2b4c0d2-5e0a-4b57-840d-3ffe006f6cd4" />
+<img width="592" height="386" alt="image" src="https://github.com/user-attachments/assets/e2b4c0d2-5e0a-4b57-840d-3ffe006f6cd4" />
