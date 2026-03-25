@@ -14,3 +14,10 @@
 
 
           kubectl get priorityclass
+
+          apiVersion: scheduling.k8s.io/v1
+          kind: PriorityClass
+          metadata:
+            name: high-priority
+          value: 1000000000
+          description: "This priority class is used for high‑priority workloads."
