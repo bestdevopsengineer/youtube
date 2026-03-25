@@ -23,3 +23,18 @@
           description: "This priority class is used for high‑priority workloads."
 
           associate this priority class to a pod 
+
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: nginx-pod
+              labels:
+                app: nginx-label
+            
+            spec:
+              containers:
+                - name: nginx-container
+                  image: nginx
+                  ports:
+                    - containerPort: 8080
+              priorityClassName: high-priority      
