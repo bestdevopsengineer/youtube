@@ -3,6 +3,13 @@
 <img width="887" height="470" alt="image" src="https://github.com/user-attachments/assets/7cec5845-02d6-4117-a3c6-8c91a7b31024" />
 
 # start with the master node
+        kubeadm upgrade plan
+        apt-get upgrade -y kubeadm=1.12.0-00
+        kubeadm upgrade apply v1.12.0
+        apt-get upgrade -y kubelet=1.12.0-00
+        systemctl restart bubelet
+
+
 <img width="702" height="452" alt="image" src="https://github.com/user-attachments/assets/f9a322e5-20ea-4a9a-abaa-a53fc2d5fce3" />
 <img width="737" height="392" alt="image" src="https://github.com/user-attachments/assets/0b137da1-6c4d-49ce-9fc7-7a19abafb583" />
 
