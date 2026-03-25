@@ -42,3 +42,6 @@
 
         Step 1: Install VPA Custom Resource Definitions (CRDs)
         kubectl apply -f /root/vpa-crds.yml
+
+        Step 2: Install VPA Role-Based Access Control (RBAC)
+        
