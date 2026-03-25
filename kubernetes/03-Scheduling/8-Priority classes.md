@@ -68,3 +68,38 @@
                       --preemption-policy=PreemptLowerPriority \
                       --description="High priority workloads" \
                       --global-default=false
+
+# Create another PriorityClass named low-priority with a value of 1000. Do not set this class as a global default.
+                    kubectl create priorityclass low-priority  \
+                    --value=1000   \
+                    --description="low priority workloads"  
+
+# In the default namespace, create a pod named low-prio-pod that runs an nginx image and uses the low-priority PriorityClass.
+
+                    apiVersion: v1
+                    kind: Pod
+                    metadata:
+                      name: low-prio-pod
+                    spec:
+                      priorityClassName: low-priority
+                      containers:
+                        - name: nginx
+                          image: nginx
+
+# In the default namespace, create a pod named high-prio-pod that runs an nginx image and uses the high-priority PriorityClass.
+
+                    apiVersion: v1
+                    kind: Pod
+                    metadata:
+                      name: high-prio-pod
+                    spec:
+                      priorityClassName: high-priority
+                      containers:
+                        - name: nginx
+                          image: nginx
+# You can compare the priority classes on both pods using the following command:
+
+                    kubectl get pods -o custom-columns="NAME:.metadata.name,PRIORITY:.spec.priorityClassName"
+                    NAME            PRIORITY
+                    high-prio-pod   high-priority
+                    low-prio-pod    low-priority
