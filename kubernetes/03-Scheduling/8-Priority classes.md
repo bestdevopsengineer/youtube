@@ -18,9 +18,10 @@
           apiVersion: scheduling.k8s.io/v1
           kind: PriorityClass
           metadata:
-            name: high-priority
+            name: high-priority                   ########
           value: 1000000000
           description: "This priority class is used for high‑priority workloads."
+          globalDefault: false
 
           associate this priority class to a pod 
 
@@ -37,4 +38,25 @@
                   image: nginx
                   ports:
                     - containerPort: 8080
-              priorityClassName: high-priority      
+              priorityClassName: high-priority      #######
+
+
+
+              if you dont define a priority for a pod the default is 0
+              If globalDefault:true, Pods without a priority automatically get this one
+
+
+# effect of pod priority
+                    critical apps  7   7   7
+                    jobs           5   5   5
+
+                    if we have high priority job coming 
+                                    6   6   6
+                    from prermptionPolicy:
+                    we will know what to do
+                    if not set default= PreemptLowerPriority
+                    that mean kill lower job and take their place
+                    critical apps  7   7   7
+                     high priority 6   6   6
+
+                     you can set it to never , so they will not get kill
