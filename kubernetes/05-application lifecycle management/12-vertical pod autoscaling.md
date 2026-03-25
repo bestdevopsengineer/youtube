@@ -44,4 +44,13 @@
         kubectl apply -f /root/vpa-crds.yml
 
         Step 2: Install VPA Role-Based Access Control (RBAC)
+        kubectl apply -f /root/vpa-rbac.yml
+
+          git clone https://github.com/kubernetes/autoscaler.git
+             cd autoscaler/vertical-pod-autoscaler
+                ./hack/vpa-up.sh
+
+         Deploy the flask-app.yml file to the Kubernetes cluster
+         
+
         
