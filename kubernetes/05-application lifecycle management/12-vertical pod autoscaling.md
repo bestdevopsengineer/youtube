@@ -51,6 +51,18 @@
                 ./hack/vpa-up.sh
 
          Deploy the flask-app.yml file to the Kubernetes cluster
+
+         Check the logs of the vpa-updater-XXXX pod to identify any potential issues with the flask-app deployment.
+         When checking the logs, you see the following error message:
+         pods_eviction_restriction.go:226] **too few replicas** for **ReplicaSet** default/**flask-app-b6c9c4f78**
+
+         kubectl scale deployment flask-app --replicas=2
+         kubectl get deployment flask-app -o wide
+         kubectl get pods -l app=flask-app
+         kubectl describe vpa flask-app
+         
+
+         
          
 
         
