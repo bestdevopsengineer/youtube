@@ -19,6 +19,27 @@
 <img width="752" height="440" alt="image" src="https://github.com/user-attachments/assets/eb4c7434-27b5-42d1-80c4-7a46da7a22ca" />
 
 # 2nd strategy (one node at the time)
+        kubectl drain node-1
+        apt-get upgrade -y kubeadm=1.12.0-00
+        apt-get upgrade -y kubelet=1.12.0-00
+        kubeadm upgrade node config --kubelet-version v1.12.0
+        systemctl restart bubelet
+        kubectl uncordon node-1
+
+        kubectl drain node-2
+        apt-get upgrade -y kubeadm=1.12.0-00
+        apt-get upgrade -y kubelet=1.12.0-00
+        kubeadm upgrade node config --kubelet-version v1.12.0
+        systemctl restart bubelet
+        kubectl uncordon node-2
+
+        kubectl drain node-3
+        apt-get upgrade -y kubeadm=1.12.0-00
+        apt-get upgrade -y kubelet=1.12.0-00
+        kubeadm upgrade node config --kubelet-version v1.12.0
+        systemctl restart bubelet
+        kubectl uncordon node-3
+        
 <img width="833" height="517" alt="image" src="https://github.com/user-attachments/assets/775a6ae8-f4e3-4a59-9d02-d24d36979450" />
 <img width="847" height="531" alt="image" src="https://github.com/user-attachments/assets/0515a808-68f0-4160-aa04-3aae945023a5" />
 <img width="731" height="451" alt="image" src="https://github.com/user-attachments/assets/8ef0fa4d-0b50-4a57-bafc-4cc377cfc2d5" />
