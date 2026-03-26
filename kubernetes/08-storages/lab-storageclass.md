@@ -27,4 +27,20 @@
           Requested Storage: 500Mi
           Do not use the volumeName field in the PVC.
 
+              apiVersion: v1
+              kind: PersistentVolumeClaim 
+              metadata:
+                name: local-pvc
+              spec:
+                accessModes: 
+                  - ReadWriteOnce
+                resources:
+                  requests: 
+                    storage: 500Mi
+                storageClassName: local-path
+
           
+# 7-Why is the PVC still in a pending state, even though it includes a valid request using the local-path storage class?
+              waiting a pod that will consume it
+
+# 8-
