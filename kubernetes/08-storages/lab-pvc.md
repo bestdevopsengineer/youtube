@@ -45,7 +45,7 @@
               hostPath:
                 path: /pv/log
 
-  # Create a Persistent Volume Claim with the given specification.
+# Create a Persistent Volume Claim with the given specification.
             kind: PersistentVolumeClaim
             apiVersion: v1
             metadata:
@@ -57,7 +57,7 @@
                 requests:
                   storage: 50Mi
 
-    # why pvc is pending
+# why pvc is pending
           access mode mismatch
           Update the Access Mode on the claim to bind it to the PV.
           
@@ -72,7 +72,7 @@
                 requests:
                   storage: 50Mi
 
-    # Update the webapp pod to use the persistent volume claim as its storage.
+# Update the webapp pod to use the persistent volume claim as its storage.
               apiVersion: v1
               kind: Pod
               metadata:
