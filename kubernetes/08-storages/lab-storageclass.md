@@ -43,4 +43,34 @@
 # 7-Why is the PVC still in a pending state, even though it includes a valid request using the local-path storage class?
               waiting a pod that will consume it
 
-# 8-
+# 8-Create a new pod called nginx with the image nginx:alpine. 
+       The Pod should make use of the PVC local-pvc and mount the volume at the path /var/www/html.
+       The PVC local-pvc should be in a bound state.
+
+       apiVersion: v1
+       kind: Pod 
+       metadata:
+         name: nginx
+       spec:
+         containers:
+           - name: nginx
+             image: nginx:alpine
+             volumeMounts:
+             - name: local-persistent-storage
+               mountPath: /var/www/html
+         volumes:
+           - name: local-persistent-storage
+             persistentVolumeClaim:
+               claimName: local-pvc  
+
+# 9-Create a new Storage Class called delayed-volume-sc that makes use of the below specs
+              provisioner: kubernetes.io/no-provisioner              
+              volumeBindingMode: WaitForFirstConsumer
+
+              ---
+              apiVersion: storage.k8s.io/v1
+              kind: StorageClass
+              metadata:
+                name: delayed-volume-sc
+              provisioner: kubernetes.io/no-provisioner
+              volumeBindingMode: WaitForFirstConsumer
