@@ -1,3 +1,5 @@
+<img width="1810" height="735" alt="image" src="https://github.com/user-attachments/assets/87d5ef0b-a6ac-435f-b380-668026a63373" />
+
 # k get pods
       NAME     READY   STATUS    RESTARTS   AGE
       webapp   1/1     Running   0          24s
