@@ -49,3 +49,135 @@
 <img width="872" height="451" alt="image" src="https://github.com/user-attachments/assets/dda6d285-ff09-4b64-b575-0fdc286ab9bb" />
 <img width="876" height="527" alt="image" src="https://github.com/user-attachments/assets/6813d416-789b-4324-a92b-4ea5e968dcab" />
 <img width="725" height="452" alt="image" src="https://github.com/user-attachments/assets/1904f9ba-358b-4238-aa40-745673754d70" />
+
+#==================================================================================================================================
+                  kubectl get node
+                  cat /etc/*release*
+                  #update to 1.29
+                  #echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /" \
+                  #| sudo tee /etc/apt/sources.list.d/kubernetes.list
+                  #update to 1.29
+                  
+                  controlplane:
+                  echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" \
+                  | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+                  curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+                  ssh node01
+                  echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" \
+                  | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+                  curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+                  ssh node02
+                  echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" \
+                  | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+                  curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+                  controlplane:
+                  
+                  sudo apt update
+                  sudo apt-cache madison kubeadm
+                  # take the top version
+                  sudo apt-mark unhold kubeadm &&
+                  sudo apt-get update &&
+                  sudo apt-get install -y kubeadm='1.29.3-1.1' &&
+                  sudo apt-mark hold kubeadm
+                  kubeadm version
+                  sudo kubeadm upgrade plan
+                  sudo kubeadm upgrade apply v1.29.3   #for node sudo kubeadm upgrade node  v1.29.3
+                  kubectl drain controlplane --ignore-daemonsets
+
+                  node01:
+                  sudo apt-mark unhold kubeadm &&
+                  sudo apt-get update &&
+                  sudo apt-get install -y kubeadm='1.29.3-1.1' &&
+                  sudo apt-mark hold kubeadm
+# labs
+        1- k version
+        Client Version: v1.33.0
+        Kustomize Version: v5.6.0
+        Server Version: v1.33.0
+
+        2-k get nodes
+        NAME           STATUS   ROLES           AGE    VERSION
+        controlplane   Ready    control-plane   106m   v1.33.0
+        node01         Ready    <none>          106m   v1.33.0
+
+        3-k get deploy
+        NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+        blue   5/5     5            5           2m
+
+        4-k get pods -o wide
+        NAME                    READY   STATUS    RESTARTS   AGE     IP           NODE           NOMINATED NODE   READINESS GATES
+        blue-69968556cc-25mrx   1/1     Running   0          2m11s   172.17.0.5   controlplane   <none>           <none>
+        blue-69968556cc-6qjf6   1/1     Running   0          2m11s   172.17.1.4   node01         <none>           <none>
+        blue-69968556cc-g5p22   1/1     Running   0          2m11s   172.17.1.3   node01         <none>           <none>
+        blue-69968556cc-lqrmx   1/1     Running   0          2m11s   172.17.0.4   controlplane   <none>           <none>
+        blue-69968556cc-zplnh   1/1     Running   0          2m11s   172.17.1.2   node01         <none>           <none>
+
+        5-You are tasked to upgrade the cluster. Users accessing the applications must not be impacted, 
+        and you cannot provision new VMs. What strategy would you use to upgrade the cluster?
+        upgrade one node at a time while moving the workloads to the other
+
+        6-What is the latest version available for an upgrade with the current version of the kubeadm tool installed?
+        sudo kubeadm upgrade plan
+         v1.33.10
+
+         7-We will be upgrading the controlplane node first. Drain the controlplane node of workloads and mark it UnSchedulable
+         kubectl drain controlplane --ignore-daemonsets
+
+         8-Upgrade the controlplane components to exact version v1.34.0
+         vim /etc/apt/sources.list.d/kubernetes.list
+         deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.34/deb/ /
+         apt update
+         apt-cache madison kubeadm
+         apt-get install kubeadm=1.34.0-1.1
+         kubeadm upgrade plan v1.34.0
+         kubeadm upgrade apply v1.34.0
+         apt-get install kubelet=1.34.0-1.1
+         systemctl daemon-reload
+         systemctl restart kubelet
+         kubectl uncordon controlplane
+
+         kubectl drain node01 --ignore-daemonsets
+         ssh node01
+         vim /etc/apt/sources.list.d/kubernetes.list
+         deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.34/deb/ /
+         apt update
+         apt-cache madison kubeadm
+         apt-get install kubeadm=1.34.0-1.1
+         kubeadm upgrade node
+         apt-get install kubelet=1.34.0-1.1
+         systemctl daemon-reload
+         systemctl restart kubelet
+         exit go back to controlplane
+
+         controlplane:
+         kubectl uncordon node01
+
+         
+         
+         
+
+
+         
+         
+
+         
+         
+         
+         
+         
+
+         
+        
+                
+                  
+                  
+
+                  
+                  
+
